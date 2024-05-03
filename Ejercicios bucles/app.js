@@ -1,4 +1,3 @@
-/*
 
 // Realizar un programa que permita el ingreso de un numero y muestre su tabla de
 // multiplicar (Los primeros 10 multiplos).
@@ -227,7 +226,6 @@ do {
     }
 } while (ganador === "Empate");
 
-*/
 
 
 
