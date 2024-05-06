@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicios 1 y 2</title>
+  </head>
+  <body>
+    <h1>Calculadora de IMC</h1>
+    <p>Introduce tu peso y altura para calcular tu IMC</p>
+    <p>
+      Mientras no se ingresen los datos, el botón de calcular estará
+      deshabilitado
+    </p>
+    <label for="peso">Peso (kg): </label>
+    <input type="number" id="peso" required />
+    <br />
+    <label for="altura">Altura (m): </label>
+    <input type="number" id="altura" step="0.01" required />
+    <br />
+    <button id="calcular">Calcular IMC</button>
+    <p id="resultado"></p>
+
+    <script src="/Ejercicios DOM/app.js"></script>
+
+    <h1>Conversor de Divisas</h1>
+    <p>Introduce la cantidad en pesos colombianos para convertir a dólares</p>
+    <label for="pesos">Pesos colombianos: </label>
+    <input type="number" id="pesos" required />
+    <br />
+    <button id="convertir">Convertir a Dólares</button>
+    <p id="conversion"></p>
+  </body>
+</html>
