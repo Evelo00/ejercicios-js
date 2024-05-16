@@ -4,24 +4,53 @@ const notas = [
     titulo: "Subir el repo",
     texto: "Link a mindhub o se me olvida",
     realizada: false,
+    imagen: "img/itsFine.png",	
   },
   {
     id: 2,
     titulo: "Hacer la tarea",
-    texto: "Tengo que hacer la tarea de matematica",
-    realizada: false,
+    texto: "Tengo que hacer la tarea del sprint",
+    realizada: true,
+    imagen: "img/Cine.jpg",
   },
   {
     id: 3,
-    titulo: "Pasear al perro",
-    texto: "Tengo que sacar a pasear al perro",
-    realizada: true,
+    titulo: "No supe que poner",
+    texto: "Pongo esta carta trampa para que no se note que no se me ocurrio nada",
+    realizada: false,
+    imagen: "img/miTurn.jpg",
+  },
+];
+
+const images = [
+  {
+    id: 1,
+    nombre: "'Estoy bien'",
+    ruta: "img/itsFine.jpg",
+  },
+  {
+    id: 2,
+    nombre: "Fino",
+    ruta: "img/Cine.jpg",
+  },
+  {
+    id: 3,
+    nombre: "Carta trampra",
+    ruta: "img/miTurn.jpg",
   },
 ];
 
 let idGlobal = 2;
 
 const contenedor = document.getElementById("contenedor");
+const selectImagen = document.getElementById("imagen");
+
+images.forEach((image) => {
+  const option = document.createElement("option");
+  option.value = image.id;
+  option.text = image.nombre;
+  selectImagen.add(option);
+});
 
 const pintarNotas = () => {
   contenedor.innerHTML = "";
@@ -33,25 +62,27 @@ const pintarNotas = () => {
     contenedor.innerHTML += `
         <div class="card">
             <h3 class="${element.realizada}">${element.titulo}</h3>
-            <p class="${element.realizada ? "realizada" : ""}">${
-      element.texto
-    }</p>
+            <p class="${element.realizada ? "realizada" : ""}">${element.texto}</p>
+            <img src="${element.imagen}" : ""}">
+            <div class="acciones">
         <input onClick="marcarRealizada(${element.id})" type="checkbox" ${
       element.realizada ? "checked" : ""
     }>
             <button onClick="borrarNota(${element.id})">Borrar nota</button>
+            </div>
         </div>
     `;
   });
 };
 
-const agregarNota = (titulo, texto) => {
+const agregarNota = (titulo, texto, imagen) => {
   idGlobal++;
   notas.push({
     id: idGlobal,
     titulo: titulo,
     texto: texto,
     realizada: false,
+    imagen: imagen,
   });
 };
 
@@ -87,10 +118,12 @@ const checkboxRealizada = document.getElementById("realizada");
 btnGuardar.addEventListener("click", () => {
   const titulo = inputTitulo.value;
   const texto = inputTexto.value;
+  const imagenId = selectImagen.value;
+  const imagen = images.find((image) => image.id === parseInt(imagenId)).ruta;
   if (titulo.trim() === "" || texto.trim() === "") {
     return;
   }
-  agregarNota(titulo, texto);
+  agregarNota(titulo, texto, imagen);
   pintarNotas();
   inputTitulo.value = "";
   inputTexto.value = "";
