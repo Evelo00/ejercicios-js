@@ -64,7 +64,8 @@ body {
   background-color: #efefef;
   color: #666;
   margin-bottom: 10px;
-  font-size: 1em;
+  font-size: 13px;
+  max-width: 220px;
   max-height: 100px;
   overflow: hidden;
 }
